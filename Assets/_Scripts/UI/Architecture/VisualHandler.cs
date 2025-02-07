@@ -47,7 +47,7 @@ namespace _Scripts.UI.Architecture
                 {
                     newButtons.Add(newButton);
                 }
-                
+
 
                 if (go.TryGetComponent(out Animator newAnimator))
                 {
@@ -123,7 +123,7 @@ namespace _Scripts.UI.Architecture
             var onClickAction = callBack;
             GetButton(buttonName).onClick.AddListener(() => { onClickAction?.Invoke(contentId); });
         }
-        
+
 
         protected void RemoveAllListener()
         {
@@ -176,7 +176,6 @@ namespace _Scripts.UI.Architecture
             }
         }
 
-        
 
         protected void SetGameObject(string targetName, bool active)
         {
@@ -188,11 +187,17 @@ namespace _Scripts.UI.Architecture
         public void SetText(string targetName, string targetText)
         {
             TMP_Text findText = GetText(targetName);
-            if (findText == null)  return; 
+            if (findText == null) return;
 
             findText.text = targetText;
         }
-        
+
+
+        protected void ReplaceUnderscoreWithSpace(string targetName, string targetText)
+        {
+            SetText(targetName, targetText.Replace('_', ' '));
+        }
+
 
         protected void SetAnimator(int parameterName, bool isActive)
         {
@@ -214,7 +219,7 @@ namespace _Scripts.UI.Architecture
             if (!AnimatorIsReady(animator)) return;
             animator.SetInteger(parameterName, parameterInt);
         }
-        
+
 
         protected void SetAnimator(string targetName, int parameterName, bool isActive)
         {
@@ -272,6 +277,7 @@ namespace _Scripts.UI.Architecture
         #endregion
 
         #region Get References
+
         protected GameObject GetGameObject(string targetName)
         {
             foreach (var item in gameObjects)
@@ -297,7 +303,7 @@ namespace _Scripts.UI.Architecture
 
             return null;
         }
-        
+
 
         protected TMP_Text GetText(string targetName)
         {
@@ -311,7 +317,7 @@ namespace _Scripts.UI.Architecture
 
             return null;
         }
-        
+
 
         protected Image GetImage(string targetName)
         {
@@ -379,9 +385,13 @@ namespace _Scripts.UI.Architecture
         public void AnimateNumericText(string textObjectName, float endValue, float animationDuration = 1f)
         {
             var targetText = GetText(textObjectName);
-            if (targetText == null) { return; }
+            if (targetText == null)
+            {
+                return;
+            }
 
-            DOTween.To(() => float.TryParse(targetText.text, out var value) ? value : 0, x => targetText.text = x.ToString("F0"), endValue, animationDuration);
+            DOTween.To(() => float.TryParse(targetText.text, out var value) ? value : 0,
+                x => targetText.text = x.ToString("F0"), endValue, animationDuration);
         }
 
         /// <summary>
@@ -391,26 +401,31 @@ namespace _Scripts.UI.Architecture
         /// <param name="startValue"></param>
         /// <param name="endValue"></param>
         /// <param name="textTemplate"></param>
-        public Tween AnimateNumericText(string textObjectName, string textTemplate, long startValue, long endValue, float animationDuration = 1f, float delay = 0f)
+        public Tween AnimateNumericText(string textObjectName, string textTemplate, long startValue, long endValue,
+            float animationDuration = 1f, float delay = 0f)
         {
             var targetText = GetText(textObjectName);
             if (targetText == null) return null;
 
             targetText.text = textTemplate.Replace("{VALUE}", startValue.ToString());
 
-            return DOTween.To(() => startValue, value => targetText.text = textTemplate.Replace("{VALUE}", value.ToString()), endValue, animationDuration).SetDelay(delay);
+            return DOTween.To(() => startValue,
+                value => targetText.text = textTemplate.Replace("{VALUE}", value.ToString()), endValue,
+                animationDuration).SetDelay(delay);
         }
 
         public void DoPunchScale(Transform targetTransform)
         {
             GetComponent<RectTransform>().localScale = Vector3.one;
-            targetTransform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 2).OnComplete(() => targetTransform.DOScale(Vector3.one, 0.2f));
+            targetTransform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 2)
+                .OnComplete(() => targetTransform.DOScale(Vector3.one, 0.2f));
         }
 
         public void DoPunchScale()
         {
             GetComponent<RectTransform>().localScale = Vector3.one;
-            transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 2).OnComplete(() => transform.DOScale(Vector3.one, 0.2f));
+            transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 2)
+                .OnComplete(() => transform.DOScale(Vector3.one, 0.2f));
         }
 
         public void ShakeLoop()
