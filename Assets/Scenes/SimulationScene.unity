@@ -3728,6 +3728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 903411946}
   - component: {fileID: 903411947}
+  - component: {fileID: 903411948}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -3782,6 +3783,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &903411948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903411945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f5f2ae75577450c9ee9c051c65fc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &925746460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8195355049160792622, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -4405,6 +4418,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 1672001285}
   - {fileID: 405050365}
+  - {fileID: 416738495}
   playerInputHandler: {fileID: 1077048834}
   playerTargetDetection: {fileID: 1077048831}
 --- !u!4 &1079230216

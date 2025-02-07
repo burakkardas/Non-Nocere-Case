@@ -9,6 +9,7 @@ namespace _Scripts.Player
         #region Actions
 
         public event Action<string> OnTargetDetected;
+        public event Action<string> OnButtonClicked;
 
         #endregion
 
@@ -74,7 +75,7 @@ namespace _Scripts.Player
         {
             if (!_playerInputHandler.ClickLeftButton) return;
 
-            Debug.LogError("Button Clicked");
+            OnButtonClicked?.Invoke(_hit.collider.name);
         }
 
 
