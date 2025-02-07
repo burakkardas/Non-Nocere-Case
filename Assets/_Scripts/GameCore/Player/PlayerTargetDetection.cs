@@ -19,12 +19,15 @@ namespace _Scripts.Player
 
         #endregion
 
+
         #region Fields
 
         private Camera _mainCamera;
         private Ray _ray;
         private RaycastHit _hit;
+        private PlayerInputHandler _playerInputHandler;
 
+        private const string Model = "Model";
         private string _targetName;
 
         #endregion
@@ -35,6 +38,7 @@ namespace _Scripts.Player
         private void Awake()
         {
             _mainCamera = Camera.main;
+            _playerInputHandler = GetComponent<PlayerInputHandler>();
         }
 
         private void Update()
@@ -63,9 +67,21 @@ namespace _Scripts.Player
                 return;
             }
 
-            OnTargetDetected?.Invoke(_hit.collider.name);
+            (LayerMask.LayerToName(_hit.collider.gameObject.layer).Equals(Model) ? (Action)ClickModel : ClickModelUI)();
         }
 
+        private void ClickModelUI()
+        {
+            if (!_playerInputHandler.ClickLeftButton) return;
+
+            Debug.LogError("Button Clicked");
+        }
+
+
+        private void ClickModel()
+        {
+            OnTargetDetected?.Invoke(_hit.collider.name);
+        }
 
         private void Reset()
         {
