@@ -1470,6 +1470,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3491065018736994844, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &339967465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491742569258411167, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &340904849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2628388578304773749, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -1774,7 +1779,7 @@ GameObject:
   - component: {fileID: 411911646}
   - component: {fileID: 411911648}
   m_Layer: 7
-  m_Name: BrainButton
+  m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2603,7 +2608,7 @@ GameObject:
   - component: {fileID: 656687238}
   - component: {fileID: 656687240}
   m_Layer: 7
-  m_Name: SkullPartsButton
+  m_Name: SkullParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3568,6 +3573,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3827449581272229897, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &880884796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7130253427637088256, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881482191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,6 +3805,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f5f2ae75577450c9ee9c051c65fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  validate: 0
+  gameObjects:
+  - {fileID: 1130624605}
+  - {fileID: 131769219}
+  - {fileID: 1713727055}
+  - {fileID: 1299590165}
+  - {fileID: 1914362076}
+  - {fileID: 599317989}
+  - {fileID: 1013069286}
+  - {fileID: 1131986469}
+  - {fileID: 1611969775}
+  - {fileID: 1714686010}
+  - {fileID: 1036630378}
+  - {fileID: 307873496}
+  - {fileID: 411911644}
+  - {fileID: 1433287340}
+  - {fileID: 656687236}
+  - {fileID: 1381363397}
+  uiImages:
+  - {fileID: 1299590167}
+  - {fileID: 599317991}
+  - {fileID: 1036630380}
+  - {fileID: 411911646}
+  - {fileID: 656687238}
+  canvasGroups: []
+  texts:
+  - {fileID: 131769221}
+  - {fileID: 1914362078}
+  - {fileID: 1013069288}
+  - {fileID: 1611969777}
+  - {fileID: 307873498}
+  - {fileID: 1433287342}
+  - {fileID: 1381363399}
+  buttons: []
+  animators: []
 --- !u!1 &925746460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8195355049160792622, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -4227,7 +4272,7 @@ GameObject:
   - component: {fileID: 1036630380}
   - component: {fileID: 1036630382}
   m_Layer: 7
-  m_Name: ArterButton
+  m_Name: Arter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4625,6 +4670,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1153989612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3208892355200453316, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166735679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -9198845310000781230, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -5009,6 +5059,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8118358776850171725, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &1285457492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2446876881345512316, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285888507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1018490459164388068, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -6009,6 +6064,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5590775289552095254, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &1487858433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8213190096631634905, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489345039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3266025306068623618, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -6218,6 +6278,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5120938546755126106, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &1555830820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7181560015305814256, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1557115983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8991867803142244838, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -6351,6 +6416,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8206910755119849659, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &1595270599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2335055761113492421, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1595974736 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8222356249888909734, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -6886,6 +6956,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0e48dad18444e409f171cf36124fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headRegionsList:
+  - name: Arter
+    headRegion: {fileID: 1822857946}
+  - name: Brain
+    headRegion: {fileID: 1487858433}
+  - name: Brain_Parts
+    headRegion: {fileID: 1595270599}
+  - name: Dura
+    headRegion: {fileID: 1285457492}
+  - name: Eyes
+    headRegion: {fileID: 2050569037}
+  - name: Nerve
+    headRegion: {fileID: 1153989612}
+  - name: Sinus
+    headRegion: {fileID: 339967465}
+  - name: Skull
+    headRegion: {fileID: 1555830820}
+  - name: Venous
+    headRegion: {fileID: 880884796}
+  headParent: {fileID: 455823289}
 --- !u!1 &1672917022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6056474287731641506, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -8177,7 +8267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6855620931536438154, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6864129711237354820, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
       propertyPath: m_Layer
@@ -8586,6 +8676,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8378434956522480070, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &1822857946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804231585047011577, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826889303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1557099055163064023, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
@@ -9214,6 +9309,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6259391758660527673, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+--- !u!1 &2050569037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6657560127643677590, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}
+  m_PrefabInstance: {fileID: 1746406771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050913917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1271717888577414254, guid: 9743fb33d08274f528d2b9da349cbe55, type: 3}

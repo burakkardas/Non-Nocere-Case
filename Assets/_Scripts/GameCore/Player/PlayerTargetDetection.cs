@@ -94,7 +94,7 @@ namespace _Scripts.Player
             if (!_playerInputHandler.ClickLeftButton) return;
             if (_hit.collider.TryGetComponent(out Renderer xRenderer))
             {
-                _modelVisualController.ToggleModelVisual(xRenderer.material);
+                _modelVisualController.ToggleInteractionState(xRenderer.material);
             }
         }
 
