@@ -15,6 +15,7 @@ namespace _Scripts.Player
 
         public Vector2 MovementInput => _inputMaster.Player.Movement.ReadValue<Vector2>();
         public Vector2 LookInput => _inputMaster.Player.Look.ReadValue<Vector2>();
+        public Vector2 ModelRotationInput => _inputMaster.Player.ModelRotate.ReadValue<Vector2>();
 
         #endregion
 

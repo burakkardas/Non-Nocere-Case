@@ -28,14 +28,6 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Ascension",
-                    "type": "Button",
-                    "id": "4240c44d-eb93-4e4a-9a72-d8d9a73ed0c4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -159,28 +151,6 @@
                     "action": "ModelRotate",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "f4767135-6478-43b7-8498-a3146ee6a014",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ascension",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "15052e53-ded7-4561-9173-0a64351fbd3b",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ascension",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

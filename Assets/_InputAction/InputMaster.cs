@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/InputMaster.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/_InputAction/InputMaster.inputactions'
 
 using System;
 using System.Collections;
@@ -39,14 +39,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""0c5ca7cb-e65e-44af-9a77-260e9d0eaa4c"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Ascension"",
-                    ""type"": ""Button"",
-                    ""id"": ""4240c44d-eb93-4e4a-9a72-d8d9a73ed0c4"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -172,28 +164,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""ModelRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f4767135-6478-43b7-8498-a3146ee6a014"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Ascension"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""15052e53-ded7-4561-9173-0a64351fbd3b"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Ascension"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,7 +175,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_ModelRotate = m_Player.FindAction("ModelRotate", throwIfNotFound: true);
-        m_Player_Ascension = m_Player.FindAction("Ascension", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -258,7 +227,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_ModelRotate;
-    private readonly InputAction m_Player_Ascension;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -266,7 +234,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @ModelRotate => m_Wrapper.m_Player_ModelRotate;
-        public InputAction @Ascension => m_Wrapper.m_Player_Ascension;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -285,9 +252,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ModelRotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModelRotate;
                 @ModelRotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModelRotate;
                 @ModelRotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModelRotate;
-                @Ascension.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAscension;
-                @Ascension.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAscension;
-                @Ascension.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAscension;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,9 +265,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ModelRotate.started += instance.OnModelRotate;
                 @ModelRotate.performed += instance.OnModelRotate;
                 @ModelRotate.canceled += instance.OnModelRotate;
-                @Ascension.started += instance.OnAscension;
-                @Ascension.performed += instance.OnAscension;
-                @Ascension.canceled += instance.OnAscension;
             }
         }
     }
@@ -313,6 +274,5 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnModelRotate(InputAction.CallbackContext context);
-        void OnAscension(InputAction.CallbackContext context);
     }
 }
