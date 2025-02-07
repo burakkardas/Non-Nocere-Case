@@ -1,5 +1,7 @@
 using System;
+using _Scripts.GameCore.Model;
 using UnityEngine;
+using VContainer;
 using static System.String;
 
 namespace _Scripts.Player
@@ -27,6 +29,7 @@ namespace _Scripts.Player
         private Ray _ray;
         private RaycastHit _hit;
         private PlayerInputHandler _playerInputHandler;
+        private ModelVisualController _modelVisualController;
 
         private const string Model = "Model";
         private string _targetName;
@@ -51,6 +54,12 @@ namespace _Scripts.Player
 
 
         #region Private Methods
+
+        [Inject]
+        private void Init(ModelVisualController modelVisualController)
+        {
+            _modelVisualController = modelVisualController;
+        }
 
         private void DetectTarget()
         {
@@ -82,6 +91,11 @@ namespace _Scripts.Player
         private void ClickModel()
         {
             OnTargetDetected?.Invoke(_hit.collider.name);
+            if (!_playerInputHandler.ClickLeftButton) return;
+            if (_hit.collider.TryGetComponent(out Renderer xRenderer))
+            {
+                _modelVisualController.ToggleModelVisual(xRenderer.material);
+            }
         }
 
         private void Reset()
