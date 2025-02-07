@@ -1,48 +1,75 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovementController : MonoBehaviour
+namespace _Scripts.Player
 {
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private float movementSpeed;
-
-    private const float MouseSensitivity = 100f;
-    private InputMaster _inputMaster;
-    private Transform _cameraTransform;
-    private float _xRotation;
-
-    private void Awake()
+    public class PlayerMovementController : MonoBehaviour
     {
-        if (Camera.main != null) _cameraTransform = Camera.main.transform;
-        _inputMaster = new InputMaster();
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        #region Serializable Fields
 
-    private void OnEnable() => _inputMaster.Enable();
-    private void OnDisable() => _inputMaster.Disable();
+        [SerializeField] private CharacterController characterController;
+        [SerializeField] private float movementSpeed;
 
-    private void Update()
-    {
-        Look();
-        Move();
-    }
+        #endregion
 
-    private void Move()
-    {
-        var moveInput = _inputMaster.Player.Movement.ReadValue<Vector2>();
-        var move = transform.right * moveInput.x + transform.forward * moveInput.y;
 
-        if (Keyboard.current.qKey.isPressed) move += Vector3.down;
-        if (Keyboard.current.eKey.isPressed && transform.position.y < 8f) move += Vector3.up;
+        #region Fields
 
-        characterController.Move(move * (movementSpeed * Time.deltaTime));
-    }
+        private const float MouseSensitivity = 100f;
+        private const float VerticalOffset = 6.5f;
 
-    private void Look()
-    {
-        var lookInput = _inputMaster.Player.Look.ReadValue<Vector2>();
-        _xRotation = Mathf.Clamp(_xRotation - lookInput.y * MouseSensitivity * Time.deltaTime, -90f, 90f);
-        _cameraTransform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * (lookInput.x * MouseSensitivity * Time.deltaTime));
+        private PlayerInputHandler _playerInputHandler;
+        private Transform _cameraTransform;
+        private float _xRotation;
+
+        #endregion
+
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            InitializeMovement();
+        }
+
+        private void Update()
+        {
+            Look();
+            Move();
+        }
+
+        #endregion
+
+
+        #region Private Methods
+
+        private void Move()
+        {
+            var moveInput = _playerInputHandler.MovementInput;
+            var move = transform.right * moveInput.x + transform.forward * moveInput.y;
+
+            if (Keyboard.current.qKey.isPressed) move += Vector3.down;
+            if (Keyboard.current.eKey.isPressed && transform.position.y < VerticalOffset) move += Vector3.up;
+
+            characterController.Move(move * (movementSpeed * Time.deltaTime));
+        }
+
+        private void Look()
+        {
+            var lookInput = _playerInputHandler.LookInput;
+            _xRotation = Mathf.Clamp(_xRotation - lookInput.y * MouseSensitivity * Time.deltaTime, -90f, 90f);
+            _cameraTransform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * (lookInput.x * MouseSensitivity * Time.deltaTime));
+        }
+
+
+        private void InitializeMovement()
+        {
+            _playerInputHandler = GetComponent<PlayerInputHandler>();
+            if (Camera.main != null) _cameraTransform = Camera.main.transform;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        #endregion
     }
 }
