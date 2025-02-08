@@ -56,8 +56,6 @@ namespace _Scripts.GameCore.Model
 
             foreach (Transform region in headParent)
             {
-                if (region.name.Equals("Skull_Parts")) continue;
-
                 headRegionsList.Add(new HeadRegions
                 {
                     name = region.name,

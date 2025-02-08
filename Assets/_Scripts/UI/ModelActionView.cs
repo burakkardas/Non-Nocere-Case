@@ -96,10 +96,7 @@ namespace _Scripts.UI
         }
 
 
-        private float GetButtonOpacity(string buttonName)
-        {
-            return GetImage(buttonName).color.a;
-        }
+        private float GetButtonOpacity(string buttonName) => GetImage(buttonName).color.a;
 
         #endregion
     }

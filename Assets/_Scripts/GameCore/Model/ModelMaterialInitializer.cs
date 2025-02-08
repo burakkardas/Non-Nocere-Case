@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,10 +15,8 @@ public class ModelMaterialInitializer : MonoBehaviour
             var meshRenderer = model.GetComponent<MeshRenderer>();
             if (meshRenderer == null) continue;
 
-            // Orijinal rengini kaydet
             _modelColor = meshRenderer.sharedMaterial.color;
 
-            // Material eşleşmesi yap
             var originalMaterialName = meshRenderer.sharedMaterial.name.Replace(" (Instance)", "");
             var newMaterial = shaderMaterials.FirstOrDefault(x => x.name == originalMaterialName);
 
