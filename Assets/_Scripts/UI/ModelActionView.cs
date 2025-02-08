@@ -12,25 +12,31 @@ namespace _Scripts.UI
     {
         #region Constants
 
-        private const string ShowAllButton = "ShowAllButton";
-        private const string CloseAllButton = "CloseAllButton";
         private const string ArterButton = "Arter";
-        private const string BrainButton = "BrainButton";
-        private const string SkullPartsButton = "SkullPartsButton";
+        private const string BrainButton = "Brain";
+        private const string SkullPartsButton = "Skull_Parts";
+        private const string VenousButton = "Venous";
 
         #endregion
 
         #region Fields
 
-        private readonly Dictionary<string, Action<string>> _modelActionsDictionary =
-            new Dictionary<string, Action<string>>();
+        private Dictionary<string, (Action<string>, HeadRegionState)> _modelActionsDictionary =
+            new Dictionary<string, (Action<string>, HeadRegionState)>();
 
-        private readonly Dictionary<float, HeadRegionState> _headRegionStateDictionary =
-            new Dictionary<float, HeadRegionState>()
+        private readonly List<HeadRegionState> _stateCycle = new List<HeadRegionState>()
+        {
+            HeadRegionState.Normal,
+            HeadRegionState.Transparent,
+            HeadRegionState.Disabled
+        };
+
+        private readonly Dictionary<HeadRegionState, float> _stateAlphaDictionary =
+            new Dictionary<HeadRegionState, float>()
             {
-                { 1f, HeadRegionState.Normal },
-                { 0.5f, HeadRegionState.Transparent },
-                { 0f, HeadRegionState.Disabled }
+                { HeadRegionState.Normal, 1f },
+                { HeadRegionState.Transparent, 0.5f },
+                { HeadRegionState.Disabled, 0f }
             };
 
         private PlayerTargetDetection _playerTargetDetection;
@@ -68,13 +74,11 @@ namespace _Scripts.UI
 
         private void SetupDictionary()
         {
-            //_modelActionsDictionary.Add(ShowAllButton, ShowAll);
-            //_modelActionsDictionary.Add(CloseAllButton, CloseAll);
-            _modelActionsDictionary.Add(ArterButton, Action);
-            _modelActionsDictionary.Add(BrainButton, Action);
-            _modelActionsDictionary.Add(SkullPartsButton, Action);
+            _modelActionsDictionary.Add(ArterButton, (UpdateState, HeadRegionState.Normal));
+            _modelActionsDictionary.Add(BrainButton, (UpdateState, HeadRegionState.Normal));
+            _modelActionsDictionary.Add(SkullPartsButton, (UpdateState, HeadRegionState.Normal));
+            _modelActionsDictionary.Add(VenousButton, (UpdateState, HeadRegionState.Normal));
         }
-
 
         private void InvokeAction(string actionName)
         {
@@ -83,20 +87,24 @@ namespace _Scripts.UI
                 return;
             }
 
-            action.Invoke(actionName);
+            action.Item1.Invoke(actionName);
         }
 
-
-        private void Action(string state)
+        private void UpdateState(string state)
         {
+            if (!_modelActionsDictionary.ContainsKey(state)) return;
+
+            var currentState = _modelActionsDictionary[state].Item2;
+            var nextStateIndex = (_stateCycle.IndexOf(currentState) + 1) % _stateCycle.Count;
+            var nextState = _stateCycle[nextStateIndex];
+
+            _modelActionsDictionary[state] = (_modelActionsDictionary[state].Item1, nextState);
+
             var button = GetImage(state);
-            button.color = new Color(button.color.r, button.color.g, button.color.b,
-                Mathf.Clamp(button.color.a - 0.5f, 0f, 1f));
-            _modelVisualController.UpdateHeadRegionVisual(_headRegionStateDictionary[GetButtonOpacity(state)], state);
+            button.color = new Color(button.color.r, button.color.g, button.color.b, _stateAlphaDictionary[nextState]);
+
+            _modelVisualController.UpdateHeadRegionVisual(nextState, state);
         }
-
-
-        private float GetButtonOpacity(string buttonName) => GetImage(buttonName).color.a;
 
         #endregion
     }
